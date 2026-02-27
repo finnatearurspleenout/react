@@ -12,10 +12,10 @@ class Popular extends Component {
                             </div>
                             <div className="navigate">
                                 <button className="prev">
-                                    <img src="img/ic_baseline-navigate-next (2).png" alt="#"/>
+                                    <img src="/ic_baseline-navigate-next (2).png" alt="#"/>
                                 </button>
                                 <button className="next">
-                                    <img src="img/ic_baseline-navigate-next.png" alt="#"/>
+                                    <img src="/ic_baseline-navigate-next.png" alt="#"/>
                                 </button>
                             </div>
                         </div>

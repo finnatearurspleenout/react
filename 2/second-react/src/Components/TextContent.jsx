@@ -25,7 +25,7 @@ class TextContent extends Component {
                             </p>
                         </div>
                         <div className="score">
-                            <img src="img/Group 5.svg" alt="#"/>
+                            <img src="/Group 5.svg" alt="#"/>
                         </div>
                     </div>
                 </section>

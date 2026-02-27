@@ -11,7 +11,7 @@ class Buttons extends Component {
                                 <span>
                                     STREAM NOW
                                 </span>
-                                <img src="img/ant-design_play-circle-filled.png" alt="#" className="img-stream"/>
+                                <img src="/ant-design_play-circle-filled.png" alt="Circle" className="img-stream"/>
                             </button>
                             <button className="episodes">
                                 <span>
