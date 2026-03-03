@@ -82,7 +82,9 @@ header .search .login-button {
     font-weight: 500;
     line-height: 39px;
     letter-spacing: 2px;
-    text-align: left;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
 }
 
 .text-content1 {

@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 
 class TextContent extends Component {
+    genreClick = (value) =>{
+        alert(`Ви вибрали жанр: ${value}`);
+    }
     render() {
         const {genre, title, director, seasons, description, year} = this.props;
         return (
@@ -9,7 +12,11 @@ class TextContent extends Component {
                     <div className="main-container">
                         <div className="text-content"> 
                             {/* Drama | Thriller | Supernatural */}
-                            <p>{genre}</p>
+                            {genre.map((item, index) => (
+                                <p key={index} onClick={() => this.genreClick(item)} style={{cursor:'pointer'}}>
+                                    {item} {index !== genre.length - 1 && '|'}
+                                </p>
+                            ))}
                         </div>
                         <div className="text-content1">
                             <p>

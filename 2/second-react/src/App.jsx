@@ -18,7 +18,7 @@ class App extends Component {
         userAvatar="/Ellipse 2.png"
         ></Header>
         <TextContent 
-        genre="Drama | Thriller | Supernatural"
+        genre={["Drama", "Thriller", "Supernatural"]}
         title="Stranger Things"
         director="Shawn Levy"
         seasons="3 (5 Episodes)"
