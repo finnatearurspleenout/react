@@ -17,6 +17,15 @@ header .main-container {
     padding: 70px 40px 0;
 }
 
+header .search .login-button {
+    background-color: rgb(165, 8, 8) !important;
+    color: white !important;
+    border: none !important;
+    padding: 10px 20px  !important;
+    border-radius: 5px !important;
+    font-family: Inter !important;
+}
+
 .logo {
     display: flex;
     align-items: center;
