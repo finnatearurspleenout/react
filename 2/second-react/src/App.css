@@ -49,6 +49,51 @@ header .search .login-button {
     gap: 45px;
 }
 
+.search-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.search-input {
+    width: 200px;
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    padding: 0 10px;
+    font-family: Inter;
+    font-size: 16px;
+}
+
+.search-result {
+    position: absolute;
+    top: 45px;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    border: 1px solid #D50D1F;
+    border-radius: 5px;
+    padding: 10px;
+    font-family: Inter;
+    font-size: 14px;
+}
+
+.result-item {
+    padding: 10px 0;
+    color: rgb(99, 46, 46);
+    cursor: pointer;
+}
+
+.clear-button {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    background: transparent;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
 .search-icon {
     background: transparent;
     border: none;

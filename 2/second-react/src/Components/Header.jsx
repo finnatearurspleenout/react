@@ -1,48 +1,90 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 
-class Header extends Component {
-    render() {
-        const {date, isLogin, userAvatar} = this.props;
-        let profileContent;
-        if(isLogin) {
-            profileContent = (
-                <img 
-                    src={userAvatar} 
-                    alt="Profile" 
-                    className="profile-avatar" 
-                />
-            );
-        }
-        else {
-            profileContent = (
-                <button className="login-button">
-                    Login
-                </button>
-            );
-        }
-        return (
-            <div>
-                <header>
-                    <div className="main-container">
-                        <div className="logo">
-                            <img src="/netflix-logo-png-2562 1.png" alt="logo"/>
-                            <p className="header-date">
-                                {/* Friday July 8th */}
-                                {date}
-                            </p>
-                        </div>
-                        <div className="search">
-                            <button className="search-icon">
-                                <img src="/fe_search.svg" alt="search"/>
-                            </button>
-                            {/* <img src="/Ellipse 2.png" alt="Ellipse" className="profile-avatar"/> */}
-                            {profileContent}
-                        </div>
-                    </div>
-                </header>
-            </div>
+const Header = ({ date, isLogin, userAvatar }) => {
+    const [showInput, setShowInput] = useState(false);
+    const [searchValue, setSearchValue] = useState('');
+    const handleSearch =(e)=>{
+        const text = e.target.value;
+        setSearchValue(text);
+        // if(text.toLowerCase() === 'stra') {
+        //     setSearchValue('Stranger Things');
+        // }
+    };
+
+    const clearSearch =()=> {
+        setSearchValue('');
+    };
+
+    const selectMovie =(title) => {
+        setSearchValue(title);
+    };
+
+    let profileContent;
+    if(isLogin) {
+        profileContent = (
+            <img 
+                src={userAvatar} 
+                alt="Profile" 
+                className="profile-avatar" 
+            />
         );
     }
+    else {
+        profileContent = (
+            <button className="login-button">
+                Login
+            </button>
+        );
+    }
+
+    return (
+        <div>
+            <header>
+                <div className="main-container">
+                    <div className="logo">
+                        <img src="/netflix-logo-png-2562 1.png" alt="logo"/>
+                        <p className="header-date">
+                            {/* Friday July 8th */}
+                            {date}
+                        </p>
+                    </div>
+                    <div className="search">
+                        {showInput && (
+                            <div className="search-wrapper">
+                                <input 
+                                    type="text" 
+                                    className='search-input'
+                                    placeholder="Search.." 
+                                    value={searchValue}
+                                    onChange={handleSearch}
+                                />
+
+                                {searchValue.length > 0 && (
+                                    <button className="clear-button" onClick={clearSearch}>
+                                        x
+                                    </button>
+                                )}
+
+                                {searchValue.toLowerCase().startsWith('stra') && searchValue !== 'Stranger Things' && (
+                                    <div className="search-result">
+                                        <div className="result-item" onClick={() => setSearchValue('Stranger Things')}>
+                                            Stranger Things
+                                        </div>
+                                    </div>
+                                )} 
+                            </div>
+                        )}
+                        <button className="search-icon" onClick={() => setShowInput(!showInput)} style={{cursor: 'pointer'}}>
+                            <img src="/fe_search.svg" alt="search"/>
+                        </button>
+                        {/* <img src="/Ellipse 2.png" alt="Ellipse" className="profile-avatar"/> */}
+                        {profileContent}
+                    </div>
+                </div>
+            </header>
+        </div>
+    );
 }
+
 
 export default Header;
