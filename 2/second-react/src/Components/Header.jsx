@@ -1,14 +1,37 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const Header = ({ date, isLogin, userAvatar }) => {
     const [showInput, setShowInput] = useState(false);
     const [searchValue, setSearchValue] = useState('');
+    const [submittedTerm, setSubmittedTerm] = useState('');
+
+    useEffect(() => {
+        if(submittedTerm.trim() !== '') {
+            console.log('Ви шукаєте:', submittedTerm);
+        }
+    }, [submittedTerm]);
+
     const handleSearch =(e)=>{
         const text = e.target.value;
         setSearchValue(text);
         // if(text.toLowerCase() === 'stra') {
         //     setSearchValue('Stranger Things');
         // }
+    };
+
+    const handleKeyEnter =(e) => {
+        if(e.key === 'Enter') {
+            setSubmittedTerm(searchValue);
+        }
+    };
+
+    const toggleSearchInput = () => {
+        if(showInput && searchValue.trim() !== '') {
+            setSubmittedTerm(searchValue);
+        }
+        else {
+            setShowInput(!showInput);
+        }
     };
 
     const clearSearch =()=> {
@@ -57,6 +80,7 @@ const Header = ({ date, isLogin, userAvatar }) => {
                                     placeholder="Search.." 
                                     value={searchValue}
                                     onChange={handleSearch}
+                                    onKeyDown={handleKeyEnter}
                                 />
 
                                 {searchValue.length > 0 && (
@@ -67,14 +91,21 @@ const Header = ({ date, isLogin, userAvatar }) => {
 
                                 {searchValue.toLowerCase().startsWith('stra') && searchValue !== 'Stranger Things' && (
                                     <div className="search-result">
-                                        <div className="result-item" onClick={() => setSearchValue('Stranger Things')}>
+                                        <div className="result-item" 
+                                        onClick={() => selectMovie('Stranger Things')}
+                                        onMouseDown={(e) => e.preventDefault()}
+                                        >
                                             Stranger Things
                                         </div>
                                     </div>
                                 )} 
                             </div>
                         )}
-                        <button className="search-icon" onClick={() => setShowInput(!showInput)} style={{cursor: 'pointer'}}>
+                        <button className="search-icon"
+                        // onClick={() => setShowInput(!showInput)}
+                        onClick={toggleSearchInput}
+                        style={{cursor: 'pointer'}}
+                        >
                             <img src="/fe_search.svg" alt="search"/>
                         </button>
                         {/* <img src="/Ellipse 2.png" alt="Ellipse" className="profile-avatar"/> */}
