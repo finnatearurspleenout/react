@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useRef } from 'react';
 
-const Price = ({ plans }) => {
+const Price = ({ plans, onSelectPlan }) => {
     return (
         <div className="container py-3">
             <div className="row row-cols-1 row-cols-md-3 mb-3 text-center">
@@ -24,6 +24,7 @@ const Price = ({ plans }) => {
                                 <button 
                                     type="button" 
                                     className={`w-100 btn btn-lg ${plan.name === 'Free'?'btn-outline-primary':'btn-primary'}`}
+                                    onClick={() => onSelectPlan(plan)}
                                 >
                                     {plan.name === 'Enterprise'?'Contact us':'Get started'}
                                 </button>

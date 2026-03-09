@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
@@ -7,6 +7,7 @@ import TextContent from './Components/TextContent';
 // import Price from './Components/Price';
 import AddPlanForm from './Components/AddPlanForm';
 import ComparePlan from './Components/ComparePlan';
+import TablePlan from './Components/TablePlan';
 import Footer from './Components/Footer';
 import CreatePlanForm from './Components/CreatePlanForm';
 
@@ -30,8 +31,17 @@ function App() {
     }
   ]);
 
+  const [selectedPlans, setSelectedPlans] = useState(null);
+  const planRef = useRef([]);
+
   const addPlan = (newPlan)=> {
     setPlans([...plans, newPlan]);
+  };
+
+  const handleSelectPlan = (plan) => {
+    setSelectedPlans(plan);
+    planRef.current.push(plan);
+    console.log('Вибір тарифів:', planRef.current);
   };
 
   return (
@@ -40,7 +50,21 @@ function App() {
         <CreatePlanForm onAddPlan={addPlan}></CreatePlanForm>
         <TextContent></TextContent>
         {/* <Price></Price> */}
-        <AddPlanForm plans={plans}></AddPlanForm>
+        <AddPlanForm plans={plans}
+        onSelectPlan={handleSelectPlan}
+        >
+          {selectedPlans && (
+            <div className='container mt-4 p-3 border'>
+              <h3>
+                Bи порівнюєте тариф: {selectedPlans.name}
+              </h3>
+              <p>
+                Ціна: {selectedPlans.price}$
+              </p>
+            </div>
+          )}
+        </AddPlanForm>
+        <TablePlan selectedPlans={planRef.current}></TablePlan>
         <ComparePlan></ComparePlan>
         <Footer></Footer>
     </>

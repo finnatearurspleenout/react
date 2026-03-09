@@ -21,6 +21,7 @@ const Header = ({ date, isLogin, userAvatar }) => {
 
     const handleKeyEnter =(e) => {
         if(e.key === 'Enter') {
+            e.preventDefault();
             setSubmittedTerm(searchValue);
         }
     };
@@ -36,6 +37,7 @@ const Header = ({ date, isLogin, userAvatar }) => {
 
     const clearSearch =()=> {
         setSearchValue('');
+        setSubmittedTerm('');
     };
 
     const selectMovie =(title) => {
