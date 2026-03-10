@@ -1,6 +1,9 @@
 import React, { useRef } from 'react';
+import { useContext } from 'react';
+import { CardContent } from './CardContent';
 
 const Price = ({ plans, onSelectPlan }) => {
+    const { addToCart } = useContext(CardContent);
     return (
         <div className="container py-3">
             <div className="row row-cols-1 row-cols-md-3 mb-3 text-center">
@@ -27,6 +30,13 @@ const Price = ({ plans, onSelectPlan }) => {
                                     onClick={() => onSelectPlan(plan)}
                                 >
                                     {plan.name === 'Enterprise'?'Contact us':'Get started'}
+                                </button>
+                                <button 
+                                    type="button" 
+                                    className={`w-100 btn btn-lg ${plan.name === 'Free'?'btn-outline-secondary':'btn-secondary'} mt-2`}
+                                    onClick={() => addToCart(plan)}
+                                >
+                                    Додати в кошик
                                 </button>
                             </div>
                         </div>

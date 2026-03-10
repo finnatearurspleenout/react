@@ -10,6 +10,8 @@ import ComparePlan from './Components/ComparePlan';
 import TablePlan from './Components/TablePlan';
 import Footer from './Components/Footer';
 import CreatePlanForm from './Components/CreatePlanForm';
+import {CardContentProvider} from './Components/CardContent';
+import CartModel from './Components/CartModel';
 
 function App() {
   const [plans, setPlans] = useState([
@@ -46,7 +48,9 @@ function App() {
 
   return (
     <>
+      <CardContentProvider>
         <Header></Header>
+        <CartModel></CartModel>
         <CreatePlanForm onAddPlan={addPlan}></CreatePlanForm>
         <TextContent></TextContent>
         {/* <Price></Price> */}
@@ -67,6 +71,7 @@ function App() {
         <TablePlan selectedPlans={planRef.current}></TablePlan>
         <ComparePlan></ComparePlan>
         <Footer></Footer>
+      </CardContentProvider>
     </>
   )
 }
