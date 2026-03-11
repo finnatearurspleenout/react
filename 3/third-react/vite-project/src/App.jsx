@@ -6,12 +6,13 @@ import Header from './Components/Header';
 import TextContent from './Components/TextContent';
 // import Price from './Components/Price';
 import AddPlanForm from './Components/AddPlanForm';
-import ComparePlan from './Components/ComparePlan';
+// import ComparePlan from './Components/ComparePlan';
 import TablePlan from './Components/TablePlan';
 import Footer from './Components/Footer';
 import CreatePlanForm from './Components/CreatePlanForm';
 import {CardContentProvider} from './Components/CardContent';
 import CartModel from './Components/CartModel';
+import TableComments from './Components/TableComments';
 
 function App() {
   const [plans, setPlans] = useState([
@@ -46,6 +47,14 @@ function App() {
     console.log('Вибір тарифів:', planRef.current);
   };
 
+  const [selectedComment, setSelectedComment] = useState([]);
+  function addComment(comment) {
+    setSelectedComment(selectedComment => [... selectedComment, comment])
+  }
+  function removeComment(idx) {
+    setSelectedComment(comment => comment.filter((_, index) => index !== idx ))
+  }
+
   return (
     <>
       <CardContentProvider>
@@ -69,7 +78,22 @@ function App() {
           )}
         </AddPlanForm>
         <TablePlan selectedPlans={planRef.current}></TablePlan>
-        <ComparePlan></ComparePlan>
+        {/* <ComparePlan></ComparePlan> */}
+        <TableComments title='Коментарі' onSelectedComment={addComment}>
+          <div className='container py-3'>
+            <h1>
+              Вибрані коментарі
+            </h1>
+            <ul className='list-group'>
+              {selectedComment.map((comment, index) => {
+                return <li key={index} className='list-group-item d-flex justify-content-between align-items-center'>
+                  <span className='me-3' style={{flex:'1 1 auto'}}>{comment.body}</span>
+                  <button className='btn btn-danger btn-sm flex-shrink-0' onClick={() => removeComment(index)}>Видалити коментар</button>
+                  </li>
+              })}
+            </ul>
+          </div>
+        </TableComments>
         <Footer></Footer>
       </CardContentProvider>
     </>
