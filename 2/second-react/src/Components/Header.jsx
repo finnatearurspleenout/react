@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom'
 
 const Header = ({ date, isLogin, userAvatar }) => {
     const [showInput, setShowInput] = useState(false);
@@ -73,12 +74,19 @@ const Header = ({ date, isLogin, userAvatar }) => {
                             {date}
                         </p>
                     </div>
-                    <div className="search">
+                    <nav className="d-flex justify-content-center flex-grow-1 gap-5 center-nav">
+                        <Link to="/" className="nav-link text-white link-danger fs-5">Home</Link>
+                        <Link to="/about" className="nav-link text-white link-danger fs-5">About</Link>
+                        <Link to="/price" className="nav-link text-white link-danger fs-5">Price</Link>
+                        <Link to="/contact" className="nav-link text-white link-danger fs-5">Contact</Link>
+                    </nav>
+                    <div className="search position-relative d-flex align-items-center">
                         {showInput && (
-                            <div className="search-wrapper">
+                            <div className="search-wrapper position-absolute end-100 me-2"
+                            style={{width: '200px'}}>
                                 <input 
                                     type="text" 
-                                    className='search-input'
+                                    className='search-input form-control'
                                     placeholder="Search.." 
                                     value={searchValue}
                                     onChange={handleSearch}
