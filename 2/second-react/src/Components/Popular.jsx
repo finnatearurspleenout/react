@@ -10,14 +10,14 @@ class Popular extends Component {
                             <div className="popular-tatle">
                                 <strong>POPULAR THIS WEEK</strong>
                             </div>
-                            <div className="navigate">
+                            {/* <div className="navigate">
                                 <button className="prev">
                                     <img src="/ic_baseline-navigate-next (2).png" alt="#"/>
                                 </button>
                                 <button className="next">
                                     <img src="/ic_baseline-navigate-next.png" alt="#"/>
                                 </button>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </section>

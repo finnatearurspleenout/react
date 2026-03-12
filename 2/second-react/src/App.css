@@ -14,7 +14,7 @@ header .main-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 70px 40px 0;
+    padding: 20px 40px 0;
     gap: 50px;
 }
 
@@ -245,6 +245,7 @@ span {
 .navigate {
     display: flex;
     gap: 20px;
+    margin-right: 144px;
     padding: 40px 0;
 }
 
@@ -272,7 +273,7 @@ span {
     align-items: flex-end;
     justify-content: flex-end;
     position: absolute;
-    top: -50px;
+    top: -100px;
     right: 0px;
 }
 
@@ -300,9 +301,10 @@ span {
     header .main-container {
         flex-direction: column;
         /* justify-content: center; */
-        /* align-items: center; */
+        align-items: center;
         padding: 40px 20px 0;
         gap: 20px;
+        width: 100%;
         /* margin: 0 auto; */
     }
 
@@ -315,6 +317,7 @@ span {
         margin-right: 0 !important;
         gap: 20px !important;
         justify-content: center;
+        order: 2;
     }
 
     .search {
@@ -331,6 +334,7 @@ span {
         width: 100%;
         height: auto;
         font-size: 18px;
+        text-align: center;
     }
 
     .buttons {
@@ -340,8 +344,9 @@ span {
     
     .content .main-container {
         display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
     }
 
     .score {
@@ -350,6 +355,15 @@ span {
 
     .popular {
         max-width: 100%;
+    }
+
+    .popular-tatle {
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    .navigate {
+        display: none;
     }
 
     .card-container {
@@ -363,4 +377,5 @@ span {
         margin: 20px auto;
         padding-top: 20px;
     }
+
 }
