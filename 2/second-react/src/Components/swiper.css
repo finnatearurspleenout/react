@@ -36,6 +36,10 @@
     opacity: 1;
 }
 
+.with-border {
+    border: 2px solid white;
+}
+
 @media(max-width:1181px) {
     .mySwiper {
         /* max-width: 900px; */

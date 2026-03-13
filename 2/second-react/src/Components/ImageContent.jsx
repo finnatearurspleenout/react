@@ -9,6 +9,17 @@ import './swiper.css'
 
 class ImageContent extends Component {
     render() {
+        const swiperImage = [
+            {id: 1, src: "/Rectangle 6.png", alt: "Breaking Bad", hasBorder:false},
+            {id: 2, src: "/Rectangle 7.png", alt: "The Rain", hasBorder:false},
+            {id: 3, src: "/Rectangle 8.png", alt: "Life after Year", hasBorder:false},
+            {id: 4, src: "/Rectangle 9.png", alt: "Money Heist", hasBorder:false},
+            {id: 5, src: "/Rectangle 11.png", alt: "Squid Game", hasBorder:false},
+            {id: 6, src: "/TheWitcher.png", alt: "The Witcher", hasBorder:true},
+            {id: 7, src: "/Queens Gambit.png", alt: "Queens Gambit", hasBorder:true},
+            {id: 8, src: "/Dark.png", alt: "Dark", hasBorder:true},
+            {id: 9, src: "/Sabrina.png", alt: "Sabrina", hasBorder:true}
+        ];
         return (
             <div>
                 <section className="popular-section">
@@ -23,36 +34,12 @@ class ImageContent extends Component {
                             modules={[FreeMode, Pagination]}
                             className="mySwiper"
                         >
-                            <SwiperSlide>
-                                <img src="/Rectangle 6.png" alt="Breaking Bad" className="img-fluid" />
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <img src="/Rectangle 7.png" alt="The Rain" className="img-fluid" />
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <img src="/Rectangle 8.png" alt="Life after Year" className="img-fluid" />
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <img src="/Rectangle 9.png" alt="Money Heist" className="img-fluid" />
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <img src="/Rectangle 11.png" alt="Squid Game" className="img-fluid" />
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <img src="/TheWitcher.png" alt="TheWitcher" className="img-fluid" 
-                                style={{border: '2px solid white'}}/>
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <img src="/Queens Gambit.png" alt="Queens Gambit" className="img-fluid" 
-                                style={{border: '2px solid white'}}/>
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <img src="/Dark.png" alt="Dark" className="img-fluid" 
-                                style={{border: '2px solid white'}}/>
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <img src="/Sabrina.png" alt="Sabrina" className="img-fluid" style={{border: '2px solid white'}}/>
-                            </SwiperSlide>
+                            {swiperImage.map((movie) => (
+                                <SwiperSlide key={movie.id}>
+                                    <img src={movie.src} alt={movie.alt} 
+                                    className={movie.hasBorder?"img-fluid with-border":"img-fluid"}/>
+                                </SwiperSlide>
+                            ))}
                         </Swiper>
                     </div>
                 </section>
